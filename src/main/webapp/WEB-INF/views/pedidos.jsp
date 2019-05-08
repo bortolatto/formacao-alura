@@ -32,7 +32,6 @@
 	    </div>
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav">
-	        <li class="nav-item"><a href="${s:mvcUrl('PSC#getPedidos').build()}">Lista de Pedidos</a></li>
 	        <li class="nav-item"><a href="${s:mvcUrl('PC#listar').build()}">Lista de Produtos</a></li>
 	        <li class="nav-item"><a href="${s:mvcUrl('PC#form').build()}">Cadastro de Produtos</a></li>
 	      </ul>
@@ -52,23 +51,23 @@
 	</nav>
 
 	<div class="container">
-		<h1>Lista de Produtos</h1>
+		<h1>Lista de Pedidos</h1>
 		<p> ${sucesso} </p>
 		<p> ${falha} </p>
 	
 		<table class="table table-bordered table-striped table-hover">
 			<tr>
-				<th>Título</th>
-				<th>Descrição</th>
-				<th>Preços</th> 
-				<th>Páginas</th>
+				<th>ID</th>
+				<th>Valor</th>
+				<th>Data Pedido</th> 
+				<th>Títulos</th>
 			</tr>
-			<c:forEach items="${produtos }" var="produto">
+			<c:forEach items="${pedidos }" var="pedido">
 				<tr>
-					<td><a href="${s:mvcUrl('PC#detalhe').arg(0, produto.id).build() }">${produto.titulo }</a> </td>
-					<td>${produto.descricao }</td>
-					<td>${produto.precos }</td>
-					<td>${produto.paginas }</td>
+					<td>${pedido.id }</td>
+					<td>${pedido.valor }</td>
+					<td>${pedido.dataPedido }</td>
+					<td>${pedido.itens }</td>
 				</tr>
 			</c:forEach>
 		</table>

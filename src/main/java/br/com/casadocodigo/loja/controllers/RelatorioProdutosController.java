@@ -12,25 +12,24 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.casadocodigo.loja.application.ProdutoDTO;
+import br.com.casadocodigo.loja.dao.ProdutoDAO;
 import br.com.casadocodigo.loja.models.Produto;
-import br.com.casadocodigo.loja.models.Produtos;
 
 @RestController
 public class RelatorioProdutosController {
 	@Autowired
-	private Produtos repositorioDeProdutos;
+	private ProdutoDAO dao;
 
 	@RequestMapping(path = "/relatorio-produtos", method = RequestMethod.GET)
 	public ProdutoDTO getProdutos(@RequestParam(name = "data", required = false) 
 								  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataLancamento) {
 		List<Produto> produtos = null;
 		if (dataLancamento == null) {
-			produtos = repositorioDeProdutos.buscarTodosLancados();
+			produtos = dao.listarTodos();
 		} else {
-			produtos = repositorioDeProdutos.buscarTodosComDataPosteriorA(dataLancamento);
+			produtos = dao.listarTodosComDataLancamentoPosteriorA(dataLancamento);
 		}
-		ProdutoDTO produtoDTO = new ProdutoDTO(Calendar.getInstance(), produtos);
-		return produtoDTO;
+		return new ProdutoDTO(Calendar.getInstance(), produtos);
 	}
 
 }

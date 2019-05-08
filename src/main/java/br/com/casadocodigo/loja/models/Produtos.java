@@ -14,7 +14,7 @@ public class Produtos {
 	private ProdutoDAO dao;
 
 	public List<Produto> buscarTodosLancados() {
-		return dao.listar();
+		return dao.listarTodos();
 	}
 
 	public List<Produto> buscarTodosComDataPosteriorA(LocalDate dataDeLancamento) {
