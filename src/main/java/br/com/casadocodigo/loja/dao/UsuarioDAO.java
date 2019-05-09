@@ -45,4 +45,8 @@ public class UsuarioDAO implements UserDetailsService{
 	public void gravar(Usuario usuario) {
 		manager.persist(usuario);
 	}
+	
+	public void atualizar(Usuario usuario) {
+		manager.merge(usuario);
+	}
 }
