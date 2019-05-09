@@ -1,6 +1,5 @@
 package br.com.casadocodigo.loja.models;
 
-import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -26,9 +25,8 @@ public class Pedidos {
 
 		List<PedidoDTO> resposta = dao.listar();
 		resposta.forEach(dto -> {
-			LocalDate date = Instant.ofEpochMilli(dto.getData()).atZone(ZoneId.systemDefault()).toLocalDate();
-			
-			pedidos.add(new Pedido(dto.getId(), formatter.format(date), dto.getValor(), montaTitulos(dto)));
+			LocalDate dataPedido = Instant.ofEpochMilli(dto.getData()).atZone(ZoneId.systemDefault()).toLocalDate();
+			pedidos.add(new Pedido(dto.getId(), formatter.format(dataPedido), dto.getValor(), montaTitulos(dto)));
 		});
 		return pedidos;
 	}

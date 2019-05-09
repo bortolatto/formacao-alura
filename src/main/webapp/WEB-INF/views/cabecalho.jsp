@@ -14,6 +14,7 @@
 					<ul class="nav navbar-nav navbar-left">
 					<security:authorize access="hasRole('ROLE_ADMIN')">
 						<li><a href="${s:mvcUrl('PSC#getPedidos').build() }" rel="nofollow"><fmt:message key="menu.lista_pedidos"/></a></li>
+						<li><a href="${s:mvcUrl('UC#form').build() }" rel="nofollow"><fmt:message key="menu.cadastro_usuarios"/></a></li>
 						<li><a href="${s:mvcUrl('PC#listar').build() }" rel="nofollow"><fmt:message key="menu.lista_produtos"/></a></li>
 						<li><a href="${s:mvcUrl('PC#form').build() }" rel="nofollow"><fmt:message key="menu.cadastro_produtos"/></a></li>
 					</security:authorize>

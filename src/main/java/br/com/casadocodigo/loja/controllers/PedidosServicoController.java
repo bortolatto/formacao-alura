@@ -15,13 +15,13 @@ import br.com.casadocodigo.loja.models.Pedidos;
 @RequestMapping("/pedidos")
 public class PedidosServicoController {
 	@Autowired 
-	private Pedidos repositorioDePedidos;
+	private Pedidos repositorio;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView getPedidos() {
-		List<Pedido> pedidos = repositorioDePedidos.buscarAtuais();
+		List<Pedido> pedidos = repositorio.buscarAtuais();
 		
-		ModelAndView modelAndView = new ModelAndView("pedidos");
+		ModelAndView modelAndView = new ModelAndView("pedidos/detalhe");
 		modelAndView.addObject("pedidos", pedidos);
 		return modelAndView;
 	}
